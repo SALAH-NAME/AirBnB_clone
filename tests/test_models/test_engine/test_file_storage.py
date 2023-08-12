@@ -24,14 +24,13 @@ class TestFileStorage(unittest.TestCase):
         # Test that all returns a dictionary
         self.assertIsInstance(self.storage.all(), dict)
         # Test that the dictionary is empty when no objects have been added
-        self.assertEqual(len(self.storage.all()), 6)
+        self.assertEqual(len(self.storage.all()), 8)
 
     def test_new(self):
         """Test the new method"""
         # Test that new adds an object to the __objects dictionary
         self.storage.new(self.base_model)
-        st = "BaseModel.{}"
-        self.assertIn(st.format(self.base_model.id), self.storage.all())
+        self.assertIn("BaseModel.{}".format(self.base_model.id), self.storage.all())
 
     def test_save(self):
         """Test the save method"""
