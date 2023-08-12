@@ -8,12 +8,21 @@ import shlex
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """The entry point of the command interpreter."""
     # Set the custom prompt
     prompt = "(hbnb) "
+    actions = [
+        "BaseModel", "User", "State", "City",
+        "Amenity", "Place", "Review"
+    ]
 
     def do_create(self, arg):
         """
@@ -26,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             print("** class name missing **")
-        elif arg not in ["BaseModel", "User"]:
+        elif arg not in self.actions:
             print("** class doesn't exist **")
         else:
             if arg == "BaseModel":
@@ -35,6 +44,16 @@ class HBNBCommand(cmd.Cmd):
             elif arg == "User":
                 # Create a new instance of User
                 obj = User()
+            elif arg == "State":
+                obj = State()
+            elif arg == "City":
+                obj = City()
+            elif arg == "Amenity":
+                obj = Amenity()
+            elif arg == "Place":
+                obj = Place()
+            elif arg == "Review":
+                obj = Review()
             # Save the instance to the JSON file
             obj.save()
             # Print the id of the instance
@@ -52,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User"]:
+        elif args[0] not in self.actions:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -79,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User"]:
+        elif args[0] not in self.actions:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -105,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
             self (HBNBCommand): the current instance
             arg (str): optional, the class name
         """
-        if arg and arg not in ["BaseModel", "User"]:
+        if arg and arg not in self.actions:
             print("** class doesn't exist **")
         else:
             objs = []
@@ -128,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(arg)
         if not args:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User"]:
+        elif args[0] not in self.actions:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
