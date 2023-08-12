@@ -7,8 +7,7 @@ from models.base_model import BaseModel
 
 class FileStorage:
     """
-    Serializes instances to a JSON file and deserializes
-    JSON file to instances.
+    Serializes instances to a JSON file and deserializes JSON f to instances.
     """
     __file_path = "file.json"
     __objects = {}
@@ -42,8 +41,6 @@ class FileStorage:
         d = {}
         for key, value in FileStorage.__objects.items():
             d[key] = value.to_dict()
-#        c = FileStorage.__objects
-#        d = {obj: objects_copy[obj].to_dict() for obj in objects_copy.keys()}
 
         with open(FileStorage.__file_path, "w") as f:
             json.dump(d, f)
