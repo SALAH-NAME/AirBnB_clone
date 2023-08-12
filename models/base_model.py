@@ -4,6 +4,7 @@ This module defines the BaseModel class
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -31,6 +32,7 @@ class BaseModel:
             # Assign the current datetime to the created_at and updated_at atributs
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -50,6 +52,7 @@ class BaseModel:
             self (BaseModel): the current instance
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
