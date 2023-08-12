@@ -6,6 +6,7 @@ which is the entry point of the command interpreter.
 import cmd
 import shlex
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -25,11 +26,15 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             print("** class name missing **")
-        elif arg != "BaseModel":
+        elif arg not in  ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
-            # Create a new instance of BaseModel
-            obj = BaseModel()
+            if arg == "BaseModel"
+                # Create a new instance of BaseModel
+                obj = BaseModel()
+            elif arg == "User"
+                # Create a new instance of User
+                obj = User()
             # Save the instance to the JSON file
             obj.save()
             # Print the id of the instance
@@ -47,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -74,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -100,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
             self (HBNBCommand): the current instance
             arg (str): optional, the class name
         """
-        if arg and arg != "BaseModel":
+        if arg and arg not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
             objs = []
@@ -123,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(arg)
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
