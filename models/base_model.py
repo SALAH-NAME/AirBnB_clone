@@ -29,7 +29,7 @@ class BaseModel:
         else:
             # Assign a unique id to the instance using uuid.uuid4()
             self.id = str(uuid.uuid4())
-            # Assign the current datetime to the created_at and updated_at atributs
+            # Assign the current date to the created_at and updated_at atributs
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
