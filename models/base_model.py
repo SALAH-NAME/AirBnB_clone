@@ -4,6 +4,7 @@ This module defines the BaseModel class
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -17,9 +18,6 @@ class BaseModel:
             args (any): not used here
             kwargs (dict): dictionary of key/value pairs attributes
         """
-        from models import storage
-
-
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -34,7 +32,7 @@ class BaseModel:
             # Assign the current date to the created_at and updated_at atributs
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -53,11 +51,8 @@ class BaseModel:
         Args:
             self (BaseModel): the current instance
         """
-        from models import storage
-
-
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
