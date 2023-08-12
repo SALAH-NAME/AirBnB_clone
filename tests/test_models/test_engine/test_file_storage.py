@@ -30,7 +30,8 @@ class TestFileStorage(unittest.TestCase):
         """Test the new method"""
         # Test that new adds an object to the __objects dictionary
         self.storage.new(self.base_model)
-        self.assertIn("BaseModel.{}".format(self.base_model.id), self.storage.all())
+        st = "BaseModel.{}"
+        self.assertIn(st.format(self.base_model.id), self.storage.all())
 
     def test_save(self):
         """Test the save method"""
