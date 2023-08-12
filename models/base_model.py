@@ -4,7 +4,6 @@ This module defines the BaseModel class
 """
 import uuid
 from datetime import datetime
-from models.__init__ import storage
 
 
 class BaseModel:
@@ -18,6 +17,9 @@ class BaseModel:
             args (any): not used here
             kwargs (dict): dictionary of key/value pairs attributes
         """
+        from models import storage
+
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -51,6 +53,9 @@ class BaseModel:
         Args:
             self (BaseModel): the current instance
         """
+        from models import storage
+
+
         self.updated_at = datetime.now()
         storage.save()
 
