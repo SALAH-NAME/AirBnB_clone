@@ -22,6 +22,7 @@ class FileStorage:
         Returns:
             dict: the dictionary __objects
         """
+        # Just return __objects
         return FileStorage.__objects
 
     def new(self, obj):
@@ -69,4 +70,5 @@ class FileStorage:
                 FileStorage.__objects[key] = cls(**value)
         # If the file does not exist, nothing happens
         except FileNotFoundError:
+            # see the other comment
             pass
