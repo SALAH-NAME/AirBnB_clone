@@ -24,6 +24,7 @@ class FileStorage:
         """
         return FileStorage.__objects
 
+
     def new(self, obj):
         """
         Set in __objects the obj with key <obj class name>.id.
