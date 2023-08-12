@@ -76,4 +76,4 @@ class FileStorage:
         # If the file does not exist, nothing happens
         except FileNotFoundError:
             # see the other comment
-            pass
+            return

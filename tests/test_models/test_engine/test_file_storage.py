@@ -1,3 +1,6 @@
+"""
+Defines unittests for models/engine/file_storage.py.
+"""
 import unittest
 import models
 import os
@@ -25,7 +28,7 @@ class TestFileStorage(unittest.TestCase):
         # Test that all returns a dictionary
         self.assertIsInstance(self.storage.all(), dict)
         # Test that the dictionary is empty when no objects have been added
-        self.assertEqual(len(self.storage.all()), len(self.storage.all()))
+        self.assertEqual(len(self.storage.all()), 12)
 
     def test_new(self):
         """Test the new method"""
@@ -84,7 +87,6 @@ class TestFileStorage(unittest.TestCase):
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
             models.storage.reload(None)
-
 
 if __name__ == "__main__":
     unittest.main()
