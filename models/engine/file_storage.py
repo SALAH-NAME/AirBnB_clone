@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines the BaseModel class
+This module defines the FileStorage class
 """
 import json
 from models.base_model import BaseModel
