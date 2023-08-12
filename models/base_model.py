@@ -4,7 +4,7 @@ This module defines the BaseModel class
 """
 import uuid
 from datetime import datetime
-from models import storage
+from models.__init__ import storage
 
 
 class BaseModel:
