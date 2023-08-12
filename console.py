@@ -29,10 +29,10 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in  ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
-            if arg == "BaseModel"
+            if arg == "BaseModel":
                 # Create a new instance of BaseModel
                 obj = BaseModel()
-            elif arg == "User"
+            elif arg == "User":
                 # Create a new instance of User
                 obj = User()
             # Save the instance to the JSON file
