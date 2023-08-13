@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         elif (len(args) == 2 and
                 args[1].startswith("show(") and
                 args[1].endswith(")")):
-            id = args[1][5:-1]
+            id = args[1][6:-2]
             self.do_show(args[0] + " " + id)
         else:
             super().default(line)
