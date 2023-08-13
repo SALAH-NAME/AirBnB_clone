@@ -41,6 +41,11 @@ class HBNBCommand(cmd.Cmd):
                 args[1].endswith(")")):
             id = args[1][6:-2]
             self.do_show(args[0] + " " + id)
+        elif (len(args) == 2 and
+                args[1].startswith("destroy(") and
+                args[1].endswith(")")):
+            id = args[1][9:-2]
+            self.do_destroy(args[0] + " " + id)
         else:
             super().default(line)
 
