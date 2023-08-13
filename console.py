@@ -46,6 +46,15 @@ class HBNBCommand(cmd.Cmd):
                 args[1].endswith(")")):
             id = args[1][9:-2]
             self.do_destroy(args[0] + " " + id)
+        elif (len(args) == 2 and
+                args[1].startswith("update(") and
+                args[1].endswith(")")):
+            params = args[1][7:-1].split(", ")
+            if len(params) == 3:
+                id, attr_name, attr_value = params
+                self.do_update(
+                        args[0] + " " + id + " " + attr_name + " " + attr_value
+                        )
         else:
             super().default(line)
 
