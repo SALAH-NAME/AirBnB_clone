@@ -34,6 +34,8 @@ class HBNBCommand(cmd.Cmd):
         args = line.split('.')
         if len(args) == 2 and args[1] == "all()":
             self.do_all(args[0])
+        elif len(args) == 2 and args[1] == "count()":
+            self.do_count(args[0])
         else:
             super().default(line)
 
@@ -191,6 +193,26 @@ class HBNBCommand(cmd.Cmd):
                 setattr(obj, attr_name, attr_value)
                 # Save changes to storage
                 obj.save()
+
+    def do_count(self, arg):
+        """
+        Prints the number of instances of a class.
+        Usage: count <class name>
+        Args:
+            self (HBNBCommand): the current instance
+            arg (str): the class name
+        """
+        if not arg:
+            print("** class name missing **")
+        elif arg not in self.actions:
+            print("** class doesn't exist **")
+        else:
+            count = 0
+            for key in storage.all().keys():
+                if key.startswith(arg + "."):
+                    count += 1
+            print(count)
+
 
     def do_quit(self, arg):
         """
