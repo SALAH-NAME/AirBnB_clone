@@ -24,6 +24,19 @@ class HBNBCommand(cmd.Cmd):
         "Amenity", "Place", "Review"
     ]
 
+    def default(self, line):
+        """
+        Called on an input line when the command prefix is not recognized.
+        Args:
+            self (HBNBCommand): the current instance
+            line (str): the input line
+        """
+        args = line.split('.')
+        if len(args) == 2 and args[1] == "all()":
+            self.do_all(args[0])
+        else:
+            super().default(line)
+
     def do_create(self, arg):
         """
         Creates a new instance of BaseModel,
