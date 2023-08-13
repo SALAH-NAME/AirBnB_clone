@@ -36,6 +36,11 @@ class HBNBCommand(cmd.Cmd):
             self.do_all(args[0])
         elif len(args) == 2 and args[1] == "count()":
             self.do_count(args[0])
+        elif (len(args) == 2 and
+                args[1].startswith("show(") and
+                args[1].endswith(")")):
+            id = args[1][5:-1]
+            self.do_show(args[0] + " " + id)
         else:
             super().default(line)
 
@@ -212,7 +217,6 @@ class HBNBCommand(cmd.Cmd):
                 if key.startswith(arg + "."):
                     count += 1
             print(count)
-
 
     def do_quit(self, arg):
         """
